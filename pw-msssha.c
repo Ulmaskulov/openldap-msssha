@@ -7,11 +7,11 @@
 #include "msssha.h"
 #include <stdlib.h>
 
-static LUTIL_PASSWD_CHK_FUNC chk_stub2;
+static LUTIL_PASSWD_CHK_FUNC chk_msssha;
 static const struct berval scheme = BER_BVC("{MSSSHA}");
 
 #define NS_MTA_MD5_PASSLEN	64
-static int hash_stub2(const struct berval *scheme, const struct berval *passwd,
+static int hash_msssha(const struct berval *scheme, const struct berval *passwd,
 	struct berval *hash, const char **text)
 {
     struct berval digest;
@@ -33,7 +33,7 @@ static int hash_stub2(const struct berval *scheme, const struct berval *passwd,
     return LUTIL_PASSWD_OK;
 }
 
-static int chk_stub2(const struct berval *scheme, const struct berval *passwd,
+static int chk_msssha(const struct berval *scheme, const struct berval *passwd,
 	const struct berval *cred, const char **text )
 {
     char * hashedPassString = mssshaFunction((char *)cred->bv_val, SALT_TO_USE);
@@ -48,5 +48,5 @@ static int chk_stub2(const struct berval *scheme, const struct berval *passwd,
 }
 
 int init_module(int argc, char *argv[]) {
-	return lutil_passwd_add( (struct berval *)&scheme, chk_stub2, hash_stub2 );
+	return lutil_passwd_add( (struct berval *)&scheme, chk_msssha, hash_msssha );
 }
