@@ -6,7 +6,7 @@ pw-msssha.c provides support for Microsoft SHA1 password hashes in OpenLDAP.
 About msssha
 ------------
 The main difference beetween standart OpenLDAP SHA1 and Microsoft salted SHA1 in salt order.
-Microsoft add password to salt. And there is way to change this behaviour in standart module in OpenLDAP. 
+Microsoft add password to salt. And there is no way to change this behaviour in standart module in OpenLDAP. 
 
 A msssha hash in OpenLDAP looks like this:
 
@@ -70,7 +70,7 @@ Testing
 -------
 Use slappasswd to generate some hashes.
 
-$ slappasswd -h '{MSSHA}' -o module-load="<path-to-the-module>/pw-msssha.so" -s randompassword
+$ slappasswd -h '{MSSSHA}' -o module-load="<path-to-the-module>/pw-msssha.so" -s randompassword
 
 (Yes, the keyword here is 'module-load' with a - (dash). In slapd.conf the
 keyword is 'moduleload' without the dash.) 
