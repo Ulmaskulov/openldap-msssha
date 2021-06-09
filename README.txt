@@ -23,9 +23,9 @@ from a main source. Add dependencies.
 apt-get update
 apt-get install wget make libsasl2-dev python-dev libldap2-dev libssl-dev groff groff-base
 cd /usr/include
-wget https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.44.tgz
-tar -xvf openldap-2.4.44.tgz
-cd openldap-2.4.44
+wget https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.58.tgz
+tar -xvf openldap-2.4.58.tgz
+cd openldap-2.4.58
 
 $ ./configure --prefix=/usr/local --enable-modules [other options you want]
 $ make depend
